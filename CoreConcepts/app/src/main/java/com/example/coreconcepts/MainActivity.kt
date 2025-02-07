@@ -15,6 +15,7 @@ import com.example.coreconcepts.ui.theme.CoreConceptsTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             CoreConceptsTheme {
                 // A surface container using the 'background' color from the theme
@@ -26,6 +27,17 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        var person = Person("Logesh Palani", 26)
+        // person.name = "Test"
+        val animal = Animal("Tiger", 13)
+        animal.age = 23
+//        animal = Animal("Test", 9)
+        nonInlineFunction { println("Before action") }
+    }
+    private inline fun nonInlineFunction(action: () -> Unit) {
+        println("Before action")
+        action()
+        println("After action")
     }
 }
 
@@ -44,3 +56,5 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
+class Person(val name: String, val age: Int)
+class Animal(val name: String, var age: Int)
