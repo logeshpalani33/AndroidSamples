@@ -9,7 +9,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -51,8 +50,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier, from: String) {
     Surface(color = Color.Cyan) {
         val image = painterResource(R.drawable.background)
-        Box (
-//            verticalArrangement = Arrangement.Center,
+        Box(
             modifier = modifier,
             content = {
                 Image(
@@ -69,29 +67,77 @@ fun Greeting(name: String, modifier: Modifier = Modifier, from: String) {
 }
 
 @Composable
-fun GreetingText(name: String, modifier: Modifier, from: String){
-Column (modifier = modifier.fillMaxWidth(),
-    verticalArrangement = Arrangement.Center) {
-    Text(
-    text = name,
-    fontSize = 100.sp,
-    lineHeight = 116.sp,
-    modifier = modifier
-        .padding(top = 100.dp)
-        .background(Color.Green),
-    textAlign = TextAlign.Center)
-    Text(
-        text = from,
-        fontSize = 30.sp,
-        lineHeight = 116.sp,
-        modifier = modifier.align(alignment = Alignment.CenterHorizontally),
-        textAlign = TextAlign.Right) }
+fun GreetingText(name: String, modifier: Modifier, from: String) {
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = name,
+            fontSize = 100.sp,
+            lineHeight = 116.sp,
+            modifier = modifier
+                .padding(top = 100.dp)
+                .background(Color.Green),
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = from,
+            fontSize = 30.sp,
+            lineHeight = 116.sp,
+            modifier = modifier.align(alignment = Alignment.CenterHorizontally),
+            textAlign = TextAlign.Right
+        )
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     GreetingCardTheme {
-        Greeting(stringResource(R.string.happy_birthday_text), from = stringResource(R.string.signature_text))
+        Greeting(
+            stringResource(R.string.happy_birthday_text),
+            from = stringResource(R.string.signature_text)
+        )
     }
 }
+
+@Composable
+fun Article(title: Int, subtitle: Int, paragraph: Int, modifier: Modifier = Modifier){
+        val background = painterResource(R.drawable.bg_compose_background)
+        Column{
+            Image(
+                modifier = modifier.fillMaxWidth(),
+                painter = background,
+                contentDescription = null
+            )
+            Text(
+                text = stringResource(title),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                fontSize = 24.sp,
+            )
+            Text(text = stringResource(subtitle),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp),
+                textAlign = TextAlign.Justify
+            )
+            Text(text = stringResource(paragraph),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                textAlign = TextAlign.Justify
+            )
+        }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun ArticlePreview(){
+    GreetingCardTheme {
+        Article(R.string.jetpack_compose_tutorial,R.string.article_subtitle,R.string.article_body)
+    }
+}
+
