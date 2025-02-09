@@ -10,4 +10,7 @@
     <string name="row_composable_description">A layout composable that places its children in a horizontal sequence.</string>
     <string name="column_composable">Column composable</string>
     <string name="column_composable_description">A layout composable that places its children in a vertical sequence.</string>
+    <string name="mobile_number">+91 9787365755</string>
+    <string name="twitter_id">\@logeshpalani33</string>
+    <string name="email_id">logesh.01@hotmail.com</string>
 </resources>
